@@ -15,79 +15,89 @@ import javax.persistence.Id;
 @Entity
 public class Employee implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private int id;
 
-    private String name;
+  @Column(name = "name")
+  private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
+  @Column(name = "last_name")
+  private String lastName;
 
-    private String position;
-    private int salary;
+  @Column(name = "position")
+  private String position;
 
-    @Column(name = "start_date", columnDefinition = "DATE")
-    private LocalDate startDate;
+  @Column(name = "salary")
+  private int salary;
 
-    public Employee() {
-    }
+  @Column(name = "start_date", columnDefinition = "DATE")
+  private LocalDate startDate;
 
-    public Employee(String name, String lastName, String position, int salary, LocalDate startDate) {
-        this.name = name;
-        this.lastName = lastName;
-        this.position = position;
-        this.salary = salary;
-        this.startDate = startDate;
-    }
+  public Employee() {
+  }
 
-    public int getId() {
-        return id;
-    }
+  public Employee(String name, String lastName,
+    String position, int salary, LocalDate startDate) {
+    this.name = name;
+    this.lastName = lastName;
+    this.position = position;
+    this.salary = salary;
+    this.startDate = startDate;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public String getLastName() {
+    return lastName;
+  }
 
-    public String getPosition() {
-        return position;
-    }
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
+  public String getPosition() {
+    return position;
+  }
 
-    public int getSalary() {
-        return salary;
-    }
+  public void setPosition(String position) {
+    this.position = position;
+  }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
+  public int getSalary() {
+    return salary;
+  }
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+  public void setSalary(int salary) {
+    this.salary = salary;
+  }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-    
-    
+  public LocalDate getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(LocalDate startDate) {
+    this.startDate = startDate;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee{" + "id=" + id + ", name=" + name + ", lastName=" + lastName + ", position=" + position + ", salary=" + salary + ", startDate=" + startDate + '}';
+  }
+
 }
