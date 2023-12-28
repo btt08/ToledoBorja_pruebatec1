@@ -2,8 +2,8 @@ package com.hackaboss.employee;
 
 import com.hackaboss.employee.models.Employee;
 import com.hackaboss.employee.persistence.PersistenceController;
-import com.hackaboss.employee.persistence.exceptions.NonexistentEntityException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,10 +37,25 @@ public class App {
     System.out.print("\n\t\t\tIntroduce la opción deseada: ");
   }
 
+  public static void showEditMenu() {
+    System.out.println("¿Qué campo deseas modificar?");
+    System.out.println("1.Nombre");
+    System.out.println("2.Apellidos");
+    System.out.println("3.Cargo");
+    System.out.println("4.Salario");
+    System.out.println("5.Fecha inicio");
+    System.out.println("6.Cancelar");
+    System.out.print("Introduce opción: ");
+  }
+
   public static void listEmployees() {
     List<Employee> employees = pc.getAllEmployees();
-    for (Employee employee : employees) {
-      System.out.println(employee);
+    if (employees.isEmpty()) {
+      System.out.println("La base de datos está vacía");
+    } else {
+      for (Employee employee : employees) {
+        System.out.println(employee);
+      }
     }
   }
 
@@ -49,10 +64,15 @@ public class App {
     String position = sc.nextLine();
     List<Employee> employees = pc.getEmployeesByPosition(position);
 
-    System.out.println("\n\n\t\tEstos son los resultados para el cargo " + position + ": \n");
-    for (Employee employee : employees) {
-      System.out.println(employee);
+    if (employees.isEmpty()) {
+      System.out.println("No se han encontrado resultados");
+    } else {
+      System.out.println("\n\n\t\tEstos son los resultados para el cargo " + position + ": \n");
+      for (Employee employee : employees) {
+        System.out.println(employee);
+      }
     }
+    pause();
   }
 
   public static Employee createEmployeeObject() {
@@ -61,40 +81,40 @@ public class App {
     System.out.print("\nNombre: ");
     String name = sc.nextLine();
 
-    System.out.print("\nApellidos: ");
+    System.out.print("Apellidos: ");
     String lastName = sc.nextLine();
 
-    System.out.print("\nCargo: ");
+    System.out.print("Cargo: ");
     String position = sc.nextLine();
 
-    System.out.print("\nSalario: ");
+    System.out.print("Salario: ");
     int salary = sc.nextInt();
     sc.skip("\n");
 
-    // TODO: pedir fecha al crear un nuevo empleado y comprobar el formato
-    return new Employee(name, lastName, position, salary, LocalDate.now());
+    LocalDate startDate = askForStartDate();
 
+    return new Employee(name, lastName, position, salary,
+      startDate);
   }
 
   public static void insertNewEmployee() {
     pc.insertEmployee(createEmployeeObject());
+    System.out.println("Empleado insertado con éxito.");
+    pause();
   }
 
   public static void editEmployee() {
+    int id = 0;
     listEmployees();
-    System.out.print("\n\n\t\tIntroduce el id del empleado a modificar: ");
-    int id = sc.nextInt();
-    sc.skip("\n");
+    while (!checkIdExists(id)) {
+      System.out.print("\n\n\t\tIntroduce el id del empleado a modificar: ");
+      id = sc.nextInt();
+      sc.skip("\n");
+    }
+
     Employee employee = pc.getEmployeesById(id);
-    System.out.println("¿Qué campo deseas modificar?");
-    System.out.println("1.Nombre");
-    System.out.println("2.Apellidos");
-    System.out.println("3.Cargo");
-    System.out.println("4.Salario");
-    System.out.println("5.Cancelar");
-    System.out.print("Introduce opción: ");
-//    TODO: poder modificar la fecha 
-//    System.out.println("5.Fecha inicio");
+    showEditMenu();
+
     int opt = sc.nextInt();
     sc.skip("\n");
     System.out.print("\nIntroduce nuevo ");
@@ -115,11 +135,16 @@ public class App {
         System.out.print("salario: ");
         employee.setSalary(sc.nextInt());
       }
+      case 5 ->
+        employee.setStartDate(askForStartDate());
+
       default -> {
         return;
       }
     }
     pc.updateEmployee(employee);
+    System.out.println("Empleado modificado con éxito.");
+    pause();
   }
 
   public static boolean checkIdExists(int id) {
@@ -134,20 +159,52 @@ public class App {
     return exists;
   }
 
+  public static boolean isValidDate(String dateStr) {
+    try {
+      LocalDate.parse(dateStr);
+    } catch (DateTimeParseException e) {
+      return false;
+    }
+    return true;
+  }
+
   public static void deleteEmployee() {
     listEmployees();
     System.out.print("\n\n\t\tIntroduce el id del empleado a modificar: ");
     int id = sc.nextInt();
     sc.skip("\n");
+    System.out.println();
+
     if (checkIdExists(id)) {
       pc.deleteEmployee(id);
       System.out.println("Empleado eliminado.");
-      System.out.println("Presione una tecla para volver al menú principal");
-      sc.nextLine();
+      pause();
     } else {
       // TODO: throw NonexistentEntityException
     }
 
+  }
+
+  public static LocalDate askForStartDate() {
+    System.out.print("Fecha inicio (AAAA-MM-DD) (dejar en blanco para hoy): ");
+    String startDate = sc.nextLine();
+
+    while (!isValidDate(startDate) && !startDate.equals("")) {
+      System.out.println("Introduce un formato válido para la fecha (AAAA-MM-DD) "
+        + "o dejar en blanco para hoy");
+      startDate = sc.nextLine();
+    }
+
+    if (startDate.equals("")) {
+      startDate = LocalDate.now().toString();
+    }
+
+    return LocalDate.parse(startDate);
+  }
+
+  public static void pause() {
+    System.out.println("\nPresione una tecla para volver al menú principal\n");
+    sc.nextLine();
   }
 
   public static void run() {
@@ -156,10 +213,13 @@ public class App {
       showMenu();
       option = sc.nextInt();
       sc.skip("\n");
+      System.out.println();
 
       switch (option) {
-        case 1 ->
+        case 1 -> {
           listEmployees();
+          pause();
+        }
         case 2 ->
           findEmployeeByPosition();
         case 3 ->
