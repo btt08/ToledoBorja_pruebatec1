@@ -1,8 +1,5 @@
-com\hackaboss\employee\models\Employee_.class
 com\hackaboss\employee\models\Employee.class
-com\hackaboss\employee\persistence\exceptions\IllegalOrphanException.class
-com\hackaboss\employee\persistence\exceptions\PreexistingEntityException.class
 com\hackaboss\employee\persistence\PersistenceController.class
-com\hackaboss\employee\ToledoBorja_pruebatec1.class
 com\hackaboss\employee\persistence\EmployeeJpaController.class
 com\hackaboss\employee\persistence\exceptions\NonexistentEntityException.class
+com\hackaboss\employee\services\EmployeeService.class
