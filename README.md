@@ -28,7 +28,9 @@ Para lanzar el proyecto se deben seguir los siguientes pasos:
 1. Clonar o descargar este repositorio
 2. Importarlo en el IDE que se quiera utilizar. El proyecto fue realizado con Netbeans 17
 3. Realizar un build del proyecto para asegurarse de que el JDK 17 y las demás dependencias Maven se instalen correctamente
-4. Lanzar el proyecto con el botón correspondiente del IDE (F6 por defecto en Netbeans)
+4. Crear la base de datos "empleados" en MySQL
+5. Ejecutar [el script SQL](ToledoBorja_pruebatec1/src/main/resources)
+6. Lanzar el proyecto con el botón correspondiente del IDE (F6 por defecto en Netbeans)
 
 Para maniobrar entra las opciones se ha de hacer foco en la consola del IDE para evitar problemas.
 
