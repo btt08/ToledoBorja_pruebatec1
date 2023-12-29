@@ -60,51 +60,100 @@ public class Employee implements Serializable {
 
   
   // GETTERS
+  /**
+   * Getter para id
+   * @return id
+   */
   public int getId() {
     return id;
   }
 
+  /**
+   * Getter para nombre
+   * @return name
+   */
   public String getName() {
     return name;
   }
+  /**
+   * Getter para apellido
+   * @return lastName
+   */
   
   public String getLastName() {
     return lastName;
   }
 
+  /**
+   * Getter para position(cargo)
+   * @return position
+   */
   public String getPosition() {
     return position;
   }
 
+  /**
+   * Getter para salario
+   * @return salary
+   */
   public int getSalary() {
     return salary;
   }
 
+  /**
+   * Getter para fecha de inicio
+   * @return startDate
+   */
   public LocalDate getStartDate() {
     return startDate;
   }
 
+ 
+  // SETTERS
+  /**
+   * Setter para id
+   * @param id 
+   */
   public void setId(int id) {
     this.id = id;
   }
 
-  // SETTERS
+  /**
+   * Setter para nombre
+   * @param name
+   */
   public void setName(String name) {
     this.name = name;
   }
 
+  /**
+   * Setter para apellido
+   * @param lastName
+   */
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
 
+  /**
+   * Setter para position(cargo)
+   * @param position 
+   */
   public void setPosition(String position) {
     this.position = position;
   }
 
+  /**
+   * Setter para salario
+   * @param salary
+   */
   public void setSalary(int salary) {
     this.salary = salary;
   }
 
+  /**
+   * Setter para fecha de inicio
+   * @param startDate 
+   */
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }

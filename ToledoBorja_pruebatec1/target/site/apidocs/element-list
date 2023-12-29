@@ -1,0 +1,6 @@
+com.hackaboss.employee
+com.hackaboss.employee.GUI
+com.hackaboss.employee.models
+com.hackaboss.employee.persistence
+com.hackaboss.employee.persistence.exceptions
+com.hackaboss.employee.services
