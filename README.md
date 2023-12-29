@@ -35,4 +35,6 @@ Para maniobrar entra las opciones se ha de hacer foco en la consola del IDE para
 
 ##Documentación
 Se ha generado un JavaDoc con la documentación del proyecto.
-Se puede encontrar [aquí](ToledoBorja_pruebatec1/target/site/apidocs)
+Se puede encontrar [aquí](ToledoBorja_pruebatec1/target/site/apidocs).
+
+En [esta carpeta](ToledoBorja_pruebatec1/target/site/apidocs/resources) se ha añadido un archivo con capturas de pantalla de la aplicación.
