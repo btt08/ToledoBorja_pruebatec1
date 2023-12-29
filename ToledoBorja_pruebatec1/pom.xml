@@ -4,7 +4,7 @@
     <groupId>com.hackaboss</groupId>
     <artifactId>ToledoBorja_pruebatec1</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>jar</packaging>    
     <dependencies>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>

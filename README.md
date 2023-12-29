@@ -32,8 +32,7 @@ Para lanzar el proyecto se deben seguir los siguientes pasos:
 
 Para maniobrar entra las opciones se ha de hacer foco en la consola del IDE para evitar problemas.
 
-// TODO generar un ejecutable
 
 ##Documentación
 Se ha generado un JavaDoc con la documentación del proyecto.
-Se puede encontrar [aquí](ToledoBorja_pruebatec1/target/site/apidocs/overview-summary.html)
+Se puede encontrar [aquí](ToledoBorja_pruebatec1/target/site/apidocs)
