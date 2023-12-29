@@ -2,12 +2,13 @@ package com.hackaboss.employee.GUI;
 
 import com.hackaboss.employee.models.Employee;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author Borja Toledo
  */
-public class Menu {
+public class GUI {
 
   public static void showMenu() {
     System.out.println(
