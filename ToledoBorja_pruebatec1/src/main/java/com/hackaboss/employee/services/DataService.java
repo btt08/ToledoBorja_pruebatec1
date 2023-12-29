@@ -13,14 +13,16 @@ public class DataService {
   private static final Scanner sc = new Scanner(System.in);
 
   /**
-   * Pide al usuario un valor de tipo String, comprueba si es vacío y lo devuelve
+   * Pide al usuario un valor de tipo String, comprueba si es válido y lo devuelve
    * @return value Valor de un string pedido por consola
    */
   public static String getStringValue() {
     String value = sc.nextLine();
 
-    while (value.equals("")) {
-      System.out.print("\t\t\tEl valor no puede ser vacío, ingresa un valor: ");
+    // Comprueba si el valor es vacío o contiene valores que no son letras
+    while (value.equals("") || !value.matches("[a-zA-Z]+")) {
+      System.out.print("\t\t\tEl valor no puede ser vacío ni contener números "
+        + "\ningresa un nuevo valor: ");
       value = sc.nextLine();
     }
 
