@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
+ * Modelo de la entidad empleado para la BBDD
  * @author Borja Toledo
  */
 @Entity
@@ -35,9 +35,20 @@ public class Employee implements Serializable {
   @Column(name = "start_date", columnDefinition = "DATE")
   private LocalDate startDate;
 
+  /**
+   * Constructor por defecto
+   */
   public Employee() {
   }
 
+  /**
+   * Constructor con parámetros
+   * @param name nombre del empleado
+   * @param lastName apellido del empleado
+   * @param position cargo del empleado
+   * @param salary salario del empleado
+   * @param startDate fecha inicio en la empresa
+   */
   public Employee(String name, String lastName,
     String position, int salary, LocalDate startDate) {
     this.name = name;
@@ -47,48 +58,51 @@ public class Employee implements Serializable {
     this.startDate = startDate;
   }
 
+  
+  // GETTERS
   public int getId() {
     return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
   }
 
   public String getName() {
     return name;
   }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
+  
   public String getLastName() {
     return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
   }
 
   public String getPosition() {
     return position;
   }
 
-  public void setPosition(String position) {
-    this.position = position;
-  }
-
   public int getSalary() {
     return salary;
   }
 
-  public void setSalary(int salary) {
-    this.salary = salary;
-  }
-
   public LocalDate getStartDate() {
     return startDate;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  // SETTERS
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setPosition(String position) {
+    this.position = position;
+  }
+
+  public void setSalary(int salary) {
+    this.salary = salary;
   }
 
   public void setStartDate(LocalDate startDate) {
@@ -99,5 +113,4 @@ public class Employee implements Serializable {
   public String toString() {
     return "Employee{" + "id=" + id + ", name=" + name + ", lastName=" + lastName + ", position=" + position + ", salary=" + salary + ", startDate=" + startDate + '}';
   }
-
 }

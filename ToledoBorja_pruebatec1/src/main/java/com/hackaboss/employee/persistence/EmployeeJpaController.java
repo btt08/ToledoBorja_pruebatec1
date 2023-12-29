@@ -16,7 +16,9 @@ import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
 /**
- *
+ * Contiene los procesos que interactúan con la BBDD.
+ * El código ha sido autogenerado por Netbeans, excepto la búscqueda por cargo
+ * en findEmployeeEntities(String position)
  * @author Borja Toledo
  */
 public class EmployeeJpaController implements Serializable {
@@ -111,13 +113,21 @@ public class EmployeeJpaController implements Serializable {
     }
   }
 
+  /**
+   * Recupera de la base de datos los empleados con el cargo pasado por
+   * parámetro
+   *
+   * @param position Cargo del empleado a buscar.
+   * @return Lista de todos los empleados con cargo position
+   */
   public List<Employee> findEmployeeEntities(String position) {
     EntityManager em = getEntityManager();
 
     CriteriaBuilder cb = em.getCriteriaBuilder();
     CriteriaQuery cQuery = cb.createQuery(Employee.class);
     Root<Employee> c = cQuery.from(Employee.class);
-    ParameterExpression<String> paramEmpPosition = cb.parameter(String.class);
+    ParameterExpression<String> paramEmpPosition
+      = cb.parameter(String.class);
 
     cQuery.select(c)
       .where(

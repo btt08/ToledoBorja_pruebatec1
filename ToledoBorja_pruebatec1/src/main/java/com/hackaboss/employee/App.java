@@ -9,13 +9,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- *
+ * Contine el hilo principal de la aplicación.
  * @author Borja Toledo
  */
 public class App {
 
   private static final PersistenceController persisControl = new PersistenceController();
 
+  /**
+   * Muestra los datos de los empleados por pantalla
+   */
   public static void listEmployees() {
     List<Employee> employees = persisControl.getAllEmployees();
 
@@ -26,6 +29,10 @@ public class App {
     }
   }
 
+  /**
+   * Pide al usuario un cargo para buscar y obtiene una lista con
+   * todos los empleados que tengan ese cargo
+   */
   public static void findEmployeeByPosition() {
     System.out.print("\n\n\t\t\tPor favor, introduce el cargo a buscar: ");
     String position = DataService.getStringValue();
@@ -44,12 +51,19 @@ public class App {
     DataService.pause();
   }
 
+  /**
+   * Genera un objeto Employee y lo inserta en la BBDD
+   */
   public static void insertNewEmployee() {
     persisControl.insertEmployee(EmployeeService.createEmployeeObject());
     System.out.println("\n\t\t\t¡¡¡Empleado insertado con éxito!!!");
     DataService.pause();
   }
 
+  /**
+   * Muestra todos los empleados, pide al usuario un id a modificar,
+   * pregunta qué se desea modificar y pide el nuevo valor para actualizar en BBDD
+   */
   public static void editEmployee() {
     listEmployees();
     int employeeId = DataService.getIdValue();
@@ -60,7 +74,7 @@ public class App {
 
     int menuOption = DataService.getNumericValue();
 
-    // Usando print para reducir repetición de texto
+    // Usando print para concatenar y evitar repetición de texto
     System.out.print("\n\t\t\tIntroduce nuevo ");
     switch (menuOption) {
       case 1 -> {
@@ -95,6 +109,10 @@ public class App {
     DataService.pause();
   }
 
+  /**
+   * Muestra todos los empleados, solicita una ID y elimina el empleado en la BBDD
+   * Si el ID es 0 se cancela el proceso de eliminación
+   */
   public static void deleteEmployee() {
     listEmployees();
     int id = DataService.getIdValue();
@@ -108,6 +126,10 @@ public class App {
     DataService.pause();
   }
 
+  /**
+   * Contiene la funionalidad principal de la aplicación, mostrando
+   * la interfaz y llamando funciones según la opción seleccionada
+   */
   public static void run() {
     int menuOption;
     do {

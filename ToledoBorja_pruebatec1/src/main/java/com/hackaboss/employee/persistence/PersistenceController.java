@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Sirve de puente entre la aplicación y la persistencia en la BBDD
  * @author Borja Toledo
  */
 public class PersistenceController {

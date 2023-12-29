@@ -2,14 +2,16 @@ package com.hackaboss.employee.GUI;
 
 import com.hackaboss.employee.models.Employee;
 import java.util.List;
-import java.util.Scanner;
 
 /**
- *
+ * Contiene la "interfaz gráfica" de la aplicación, con menús y formateo de texto
  * @author Borja Toledo
  */
 public class GUI {
 
+  /**
+   * Muestra el menú principal con un header ASCII
+   */
   public static void showMenu() {
     System.out.println(
       """
@@ -31,6 +33,9 @@ public class GUI {
     System.out.print("\n\t\t\tIntroduce la opción deseada: ");
   }
 
+  /**
+   * Muestra un menú con las opciones para modificar un empleado
+   */
   public static void showEditMenu() {
     System.out.println("\t\t\t¿Qué campo deseas modificar?");
     System.out.println("\t\t\t  1.Nombre");
@@ -42,6 +47,10 @@ public class GUI {
     System.out.print("\t\t\tIntroduce opción: ");
   }
 
+  /**
+   * Muestra por pantalla datos de empleados en formato tabla
+   * @param employees Lista de empleados a mostrar
+   */
   public static void showDataInTable(List<Employee> employees) {
     String leftAlignFormat = "\t|  %-4d|   %-12s|   %-17s|  %-14s|   %-8d|    %-13s|";
 
