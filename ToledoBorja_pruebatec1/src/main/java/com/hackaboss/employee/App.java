@@ -67,9 +67,14 @@ public class App {
   public static void editEmployee() {
     listEmployees();
     int employeeId = DataService.getIdValue();
-
+    if (employeeId == 0) {
+      System.out.println("\t\t\tProceso cancelado");
+      DataService.pause();
+      return;
+    }
+    
     Employee employee = persisControl.getEmployeesById(employeeId);
-
+    
     GUI.showEditMenu();
 
     int menuOption = DataService.getNumericValue();

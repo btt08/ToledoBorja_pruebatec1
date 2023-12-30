@@ -55,6 +55,11 @@ public class EmployeeService {
         break;
       }
     }
+    
+    if (!exists){
+      System.out.println("\t\t\tLa id no es válida.");
+    }
+    
     return exists;
   }
 }
