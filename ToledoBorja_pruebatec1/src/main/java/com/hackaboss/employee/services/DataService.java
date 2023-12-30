@@ -20,7 +20,7 @@ public class DataService {
     String value = sc.nextLine();
 
     // Comprueba si el valor es vacío o contiene valores que no son letras
-    while (value.equals("") || !value.matches("[a-zA-Z]+")) {
+    while (value.equals("") || !value.matches("(?i)[A-Záéíóú]+")) {
       System.out.print("\t\t\tEl valor no puede ser vacío ni contener números "
         + "\ningresa un nuevo valor: ");
       value = sc.nextLine();
